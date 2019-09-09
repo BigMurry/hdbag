@@ -1,7 +1,10 @@
 # hdbag
 integrate hdwallet with etherjs wallet
 
+
 # Usage
+peer dependency: `ethers.js`
+
 ```javascript
 const {createWallets, bulkSendTx} = require('hdbag');
 const seeds = 'history hybrid among bike math potato pen cinnamon million drift acoustic joy';
