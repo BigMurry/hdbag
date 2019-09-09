@@ -1,0 +1,22 @@
+{
+  "name": "hdbag",
+  "version": "1.0.0",
+  "description": "integrate hdwallet with etherjs wallet",
+  "main": "index.js",
+  "repository": "git@github.com:BigMurry/hdbag.git",
+  "author": "BigMurry <hhdiao@siom.ac.cn>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "bitcore-mnemonic": "^8.6.0",
+    "ethereumjs-tx": "^2.1.1",
+    "ethereumjs-util": "^6.1.0",
+    "ethereumjs-wallet": "^0.6.3"
+  },
+  "peerDependencies": {
+    "ethers": "^4.0.37"
+  },
+  "devDependencies": {
+    "xhstandard": "^2.0.0"
+  }
+}
