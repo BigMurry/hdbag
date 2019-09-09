@@ -80,6 +80,8 @@ class Wallet {
     };
     ret.messageHash = msgHash.toString('hex');
     ret.signature = `${ret.r}${ret.s}${ret.v.toString(16)}`;
+    ret.r = '0x' + ret.r;
+    ret.s = '0x' + ret.s;
     return ret;
   }
 
