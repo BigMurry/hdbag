@@ -11,8 +11,12 @@ const ethers = require('ethers');
 // See https://github.com/ethereum/EIPs/issues/85
 const BIP44_PATH = `m/44'/60'/0'/0`;
 
+function defaultLocalNonce(address, chainId) {
+  return 0;
+}
+
 // ethNodes = {1: URL, 101: URL}
-function createWallets(seeds, count, ethNodes, localNonceGetter) {
+function createWallets(seeds, count, ethNodes, localNonceGetter = defaultLocalNonce) {
   const store = {
     size: count,
     wallets: [],
