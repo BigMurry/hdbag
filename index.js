@@ -15,6 +15,18 @@ function defaultLocalNonce(address, chainId) {
   return 0;
 }
 
+function createMasterAccount(seeds, ethNodes, localNonceGetter = defaultLocalNonce) {
+  const { xprivkey } = new Mnemonic(seeds).toHDPrivateKey();
+  const hdKey = fromExtendedKey(xprivkey);
+  const root = hdKey.derivePath(BIP44_PATH);
+  const get = (idx) => {
+    return new Wallet(root, idx, ethNodes, localNonceGetter);
+  };
+  return {
+    get
+  };
+}
+
 // ethNodes = {1: URL, 101: URL}
 function createWallets(seeds, count, ethNodes, localNonceGetter = defaultLocalNonce) {
   const store = {
@@ -129,5 +141,6 @@ async function bulkSendTx(wallet, txs = []) {
 
 module.exports = {
   createWallets,
+  createMasterAccount,
   bulkSendTx
 };
