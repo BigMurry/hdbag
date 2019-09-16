@@ -116,14 +116,18 @@ class Wallet {
       self.localNonceGetter(self.address, chainId)
     ]);
     const nonce = Math.max(chainNonce, dbNonce) + incNonce;
-    const txRes = await etherWallet.sendTransaction({
+    const rawTx = {
       to,
       data,
       gasLimit,
       gasPrice,
       nonce,
       chainId
-    });
+    };
+    if (isNaN(gasLimit) || gasLimit < 2100) {
+      delete rawTx.gasLimit;
+    }
+    const txRes = await etherWallet.sendTransaction(rawTx);
     return {txHash: txRes.hash, nonce, operator: self.address, gasLimit, gasPrice};
   }
 }
