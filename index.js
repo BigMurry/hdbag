@@ -7,6 +7,7 @@ const {
 } = require('ethereumjs-util');
 const Tx = require('ethereumjs-tx');
 const ethers = require('ethers');
+const stringify = require('json-stable-stringify');
 
 // See https://github.com/ethereum/EIPs/issues/85
 const BIP44_PATH = `m/44'/60'/0'/0`;
@@ -79,6 +80,15 @@ class Wallet {
 
   signObj(types, values) {
     const hash = ethers.utils.solidityKeccak256(types, values);
+    return this.sign(hash);
+  }
+
+  signJSON(json) {
+    const hash = ethers.utils.keccak256(
+      ethers.utils.hexlify(
+        ethers.utils.toUtf8bytes(stringify(json))
+      )
+    );
     return this.sign(hash);
   }
 
