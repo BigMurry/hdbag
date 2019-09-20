@@ -86,7 +86,7 @@ class Wallet {
   signJSON(json) {
     const hash = ethers.utils.keccak256(
       ethers.utils.hexlify(
-        ethers.utils.toUtf8bytes(stringify(json))
+        ethers.utils.toUtf8Bytes(stringify(json))
       )
     );
     return this.sign(hash);
