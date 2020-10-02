@@ -5,7 +5,7 @@ const {
   addHexPrefix,
   ecsign
 } = require('ethereumjs-util');
-const Tx = require('ethereumjs-tx');
+const Tx = require('ethereumjs-tx').Transaction;
 const ethers = require('ethers');
 const stringify = require('json-stable-stringify');
 
